@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Елизавета Филонова](https://up.htmlacademy.ru/ecmascript/4/user/407377).
-* Наставник: `Неизвестно`.
+* Наставник: [Кирилл Пензин](https://up.htmlacademy.ru/ecmascript/4/user/91821).
 
 ---
 
