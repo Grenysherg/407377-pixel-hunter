@@ -1,7 +1,7 @@
 const RIGHT_ARROW_CODE = 39;
 const LEFT_ARROW_CODE = 37;
 
-const SCREEN_TEMPLATE_CLASS = '.js-screen-template';
+const SCREEN_TEMPLATE_CLASS = `.js-screen-template`;
 
 const MIN_TEMPLATE_NUMBER = 1;
 const TEMPLATE_NUMBER = document.querySelectorAll(SCREEN_TEMPLATE_CLASS).length;
