@@ -1,7 +1,6 @@
 import getContentElement from './get-content-element';
 import showScreen from './show-screen';
 import {initGreeting} from './greeting';
-import game1Content from "./game-1";
 
 const introContent = getContentElement(
     `<div id="main" class="central__content">

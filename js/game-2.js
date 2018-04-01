@@ -3,7 +3,6 @@ import showScreen from './show-screen';
 import checkRadio from "./check-radio";
 import {initHeader} from "./header";
 import {initGame3} from './game-3';
-import game1Content from "./game-1";
 
 const game2Content = getContentElement(
     `<header class="header js-header">

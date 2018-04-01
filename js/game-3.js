@@ -3,7 +3,6 @@ import showScreen from './show-screen';
 import checkClickedElement from './check-clicked-element';
 import {initHeader} from "./header";
 import {initStats} from './stats';
-import game1Content from "./game-1";
 
 const IMAGE_CLASS = `.js-image`;
 
