@@ -1,8 +1,11 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import {initHeader} from "./header";
+import game1Content from "./game-1";
 
 const statsContent = getContentElement(
-    `<header class="header">
-      <div class="header__back">
+    `<header class="header js-header">
+      <div class="header__back js-header-back">
         <button class="back">
           <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
           <img src="img/logo_small.svg" width="101" height="44">
@@ -120,4 +123,10 @@ const statsContent = getContentElement(
       </div>
     </footer>`);
 
+const initStats = () => {
+  showScreen(statsContent);
+  initHeader();
+};
+
 export default statsContent;
+export {initStats};

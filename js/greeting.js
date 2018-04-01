@@ -1,7 +1,10 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import {initRules} from './rules';
+import game1Content from "./game-1";
 
 const greetingContent = getContentElement(
-    `<div class="greeting central--blur">
+    `<div class="greeting central--blur js-greeting">
       <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
       <h1 class="greeting__asterisk">*</h1>
       <div class="greeting__challenge">
@@ -12,7 +15,7 @@ const greetingContent = getContentElement(
           Фотореализм обманчив и коварен.<br>
           Помни, главное — смотреть очень внимательно.</p>
       </div>
-      <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
+      <div class="greeting__continue js-greeting-continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
     </div>
     <footer class="footer">
       <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
@@ -25,4 +28,16 @@ const greetingContent = getContentElement(
       </div>
     </footer>`);
 
+const initGreeting = () => {
+  showScreen(greetingContent);
+
+  const greetingElement = document.querySelector(`.js-greeting`);
+  const continueElement = greetingElement.querySelector(`.js-greeting-continue`);
+
+  continueElement.addEventListener(`click`, () => {
+    initRules();
+  });
+};
+
 export default greetingContent;
+export {initGreeting};

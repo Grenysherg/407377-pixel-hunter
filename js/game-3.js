@@ -1,8 +1,15 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import checkClickedElement from './check-clicked-element';
+import {initHeader} from "./header";
+import {initStats} from './stats';
+import game1Content from "./game-1";
+
+const IMAGE_CLASS = `.js-image`;
 
 const game3Content = getContentElement(
-    `<header class="header">
-      <div class="header__back">
+    `<header class="header js-header">
+      <div class="header__back js-header-back">
         <button class="back">
           <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
           <img src="img/logo_small.svg" width="101" height="44">
@@ -15,17 +22,17 @@ const game3Content = getContentElement(
         <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
       </div>
     </header>
-    <div class="game">
+    <div class="game js-game-3">
       <p class="game__task">Найдите рисунок среди изображений</p>
-      <form class="game__content  game__content--triple">
+      <form class="game__content  game__content--tripl">
         <div class="game__option">
-          <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+          <img class="js-image" src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
         </div>
         <div class="game__option  game__option--selected">
-          <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+          <img class="js-image" src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
         </div>
         <div class="game__option">
-          <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+          <img class="js-image" src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
         </div>
       </form>
       <div class="stats">
@@ -54,4 +61,22 @@ const game3Content = getContentElement(
       </div>
     </footer>`);
 
+const initGame3 = () => {
+  showScreen(game3Content);
+  initHeader();
+
+  const game3Element = document.querySelector(`.js-game-3`);
+
+  const checkImage = (clickedElement) => {
+    return checkClickedElement(clickedElement, IMAGE_CLASS);
+  };
+
+  game3Element.addEventListener(`click`, (event) => {
+    if (checkImage(event.target)) {
+      initStats();
+    }
+  });
+};
+
 export default game3Content;
+export {initGame3};

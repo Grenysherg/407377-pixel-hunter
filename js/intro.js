@@ -1,9 +1,12 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import {initGreeting} from './greeting';
+import game1Content from "./game-1";
 
 const introContent = getContentElement(
     `<div id="main" class="central__content">
-      <div id="intro" class="intro">
-        <h1 class="intro__asterisk">*</h1>
+      <div id="intro" class="intro js-intro">
+        <h1 class="intro__asterisk js-intro-asterisk">*</h1>
         <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
       </div>
     </div>
@@ -18,4 +21,16 @@ const introContent = getContentElement(
       </div>
     </footer>`);
 
+const initIntro = () => {
+  showScreen(introContent);
+
+  const introElement = document.querySelector(`.js-intro`);
+  const asteriskElement = introElement.querySelector(`.js-intro-asterisk`);
+
+  asteriskElement.addEventListener(`click`, () => {
+    initGreeting();
+  });
+};
+
 export default introContent;
+export {initIntro};

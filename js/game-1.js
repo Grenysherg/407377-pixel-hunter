@@ -1,8 +1,12 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import checkRadio from './check-radio';
+import {initHeader} from "./header";
+import {initGame2} from './game-2';
 
 const game1Content = getContentElement(
-    `<header class="header">
-      <div class="header__back">
+    `<header class="header js-header">
+      <div class="header__back js-header-back">
         <button class="back">
           <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
           <img src="img/logo_small.svg" width="101" height="44">
@@ -15,28 +19,28 @@ const game1Content = getContentElement(
         <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
       </div>
     </header>
-    <div class="game">
+    <div class="game js-game-1">
       <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
       <form class="game__content">
-        <div class="game__option">
+        <div class="game__option js-game-1-option">
           <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
           <label class="game__answer game__answer--photo">
-            <input name="question1" type="radio" value="photo">
+            <input class="js-game-radio" name="question1" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer game__answer--paint">
-            <input name="question1" type="radio" value="paint">
+            <input class="js-game-radio" name="question1" type="radio" value="paint">
             <span>Рисунок</span>
           </label>
         </div>
-        <div class="game__option">
+        <div class="game__option js-game-1-option">
           <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
           <label class="game__answer  game__answer--photo">
-            <input name="question2" type="radio" value="photo">
+            <input class="js-game-radio" name="question2" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer  game__answer--paint">
-            <input name="question2" type="radio" value="paint">
+            <input class="js-game-radio" name="question2" type="radio" value="paint">
             <span>Рисунок</span>
           </label>
         </div>
@@ -67,4 +71,29 @@ const game1Content = getContentElement(
       </div>
     </footer>`);
 
+const initGame1 = () => {
+  showScreen(game1Content);
+  initHeader();
+
+  const game1Element = document.querySelector(`.js-game-1`);
+  const optionCollection = game1Element.querySelectorAll(`.js-game-1-option`);
+
+  const checkOptions = () => {
+    for (let it of optionCollection) {
+      if (!checkRadio(it)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  game1Element.addEventListener(`change`, () => {
+    if (checkOptions()) {
+      initGame2();
+    }
+  });
+};
+
 export default game1Content;
+export {initGame1};

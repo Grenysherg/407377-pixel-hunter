@@ -1,8 +1,13 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import checkRadio from "./check-radio";
+import {initHeader} from "./header";
+import {initGame3} from './game-3';
+import game1Content from "./game-1";
 
 const game2Content = getContentElement(
-    `<header class="header">
-      <div class="header__back">
+    `<header class="header js-header">
+      <div class="header__back js-header-back">
         <button class="back">
           <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
           <img src="img/logo_small.svg" width="101" height="44">
@@ -15,17 +20,17 @@ const game2Content = getContentElement(
         <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
       </div>
     </header>
-    <div class="game">
+    <div class="game js-game-2">
       <p class="game__task">Угадай, фото или рисунок?</p>
       <form class="game__content  game__content--wide">
-        <div class="game__option">
+        <div class="game__option js-game-2-option">
           <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
           <label class="game__answer  game__answer--photo">
-            <input name="question1" type="radio" value="photo">
+            <input class="js-game-radio" name="question1" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer  game__answer--wide  game__answer--paint">
-            <input name="question1" type="radio" value="paint">
+            <input class="js-game-radio" name="question1" type="radio" value="paint">
             <span>Рисунок</span>
           </label>
         </div>
@@ -56,4 +61,19 @@ const game2Content = getContentElement(
       </div>
     </footer>`);
 
+const initGame2 = () => {
+  showScreen(game2Content);
+  initHeader();
+
+  const game2Element = document.querySelector(`.js-game-2`);
+  const option = game2Element.querySelector(`.js-game-2-option`);
+
+  game2Element.addEventListener(`change`, () => {
+    if (checkRadio(option)) {
+      initGame3();
+    }
+  });
+};
+
 export default game2Content;
+export {initGame2};

@@ -1,15 +1,21 @@
 import getContentElement from './get-content-element';
+import showScreen from './show-screen';
+import {initHeader} from "./header";
+import {initGame1} from './game-1';
+import game1Content from "./game-1";
+
+const DISABLED_ATTRIBUTE_NAME = `disabled`;
 
 const rulesContent = getContentElement(
-    `<header class="header">
-      <div class="header__back">
+    `<header class="header js-header">
+      <div class="header__back js-header-back">
         <button class="back">
           <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
           <img src="img/logo_small.svg" width="101" height="44">
         </button>
       </div>
     </header>
-    <div class="rules">
+    <div class="rules js-rules">
       <h1 class="rules__title">Правила</h1>
       <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
         src="img/photo_icon.png" width="16" height="16"> или рисунок <img
@@ -21,8 +27,8 @@ const rulesContent = getContentElement(
         Готовы?
       </p>
       <form class="rules__form">
-        <input class="rules__input" type="text" placeholder="Ваше Имя">
-        <button class="rules__button  continue" type="submit" disabled>Go!</button>
+        <input class="rules__input js-rules-input" type="text" placeholder="Ваше Имя">
+        <button class="rules__button continue js-rules-button" type="submit" disabled>Go!</button>
       </form>
     </div>
     <footer class="footer">
@@ -36,4 +42,36 @@ const rulesContent = getContentElement(
       </div>
     </footer>`);
 
+const initRules = () => {
+  showScreen(rulesContent);
+  initHeader();
+
+  const rulesElement = document.querySelector(`.js-rules`);
+  const inputElement = rulesElement.querySelector(`.js-rules-input`);
+  const buttonElement = rulesElement.querySelector(`.js-rules-button`);
+
+  const onButtonClick = () => {
+    initGame1();
+  };
+
+  const toggleButtonStable = (isButtonActive) => {
+    if (isButtonActive) {
+      buttonElement.removeAttribute(DISABLED_ATTRIBUTE_NAME);
+      buttonElement.addEventListener(`click`, onButtonClick);
+    } else {
+      buttonElement.setAttribute(DISABLED_ATTRIBUTE_NAME, DISABLED_ATTRIBUTE_NAME);
+      buttonElement.removeEventListener(`click`, onButtonClick);
+    }
+  };
+
+  inputElement.addEventListener(`input`, () => {
+    if (inputElement.value.trim()) {
+      toggleButtonStable(true);
+    } else {
+      toggleButtonStable(false);
+    }
+  });
+};
+
 export default rulesContent;
+export {initRules};
