@@ -1,7 +1,7 @@
 export const ANSWER_TIME = {
-  FAST: 10,
-  SLOW: 20,
-  INCORRECT: 30
+  FAST: 10000,
+  SLOW: 20000,
+  INCORRECT: 30000
 };
 
 export const ANSWER_SCORE = {
@@ -12,8 +12,8 @@ export const ANSWER_SCORE = {
   LIFE: 50
 };
 
-export const FAIL_RESULT = -1;
-
 export const LIVE_NUMBER = 3;
 
 export const GAME_NUMBER = 10;
+
+export const ONE_SECOND = 1000;

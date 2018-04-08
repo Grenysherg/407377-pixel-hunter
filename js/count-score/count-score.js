@@ -1,8 +1,8 @@
-import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER, FAIL_RESULT} from "../data";
+import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../data";
 
 export default (answers, remainingLives) => {
   if (answers.length < GAME_NUMBER) {
-    return FAIL_RESULT;
+    return -1;
   }
 
   let score = 0;
