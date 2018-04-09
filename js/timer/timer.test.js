@@ -1,32 +1,28 @@
 import {assert} from "chai";
-import {ONE_SECOND} from "../data";
 import {initTimer} from "./timer";
 
 describe(`Check timer:`, () => {
   it(`should return an object`, () => {
-    for (let i = 1; i <= 2; i++) {
-      assert.isObject(initTimer(i * ONE_SECOND));
+    for (let i = 1; i <= 5; i++) {
+      assert.isObject(initTimer(i));
     }
   });
 
   it(`should return remaining time reduced by one after the method tick() is called`, () => {
     for (let i = 1; i <= 5; i++) {
-      const time = (1 + i) * ONE_SECOND;
-
-      assert.equal(initTimer(time).tick(), time - ONE_SECOND);
+      assert.equal(initTimer(i + 1).tick(), i);
     }
   });
 
-  it(`should return -1 when time is over`, () => {
+  it(`should return 0 when time is over`, () => {
     for (let i = 1; i <= 5; i++) {
-      const time = i * ONE_SECOND;
-      const timer = initTimer(time);
+      const timer = initTimer(i);
 
-      for (let j = 1; j < time / ONE_SECOND; j++) {
+      for (let j = 1; j < i; j++) {
         timer.tick();
       }
 
-      assert.equal(timer.tick(), -1);
+      assert.equal(timer.tick(), 0);
     }
   });
 });

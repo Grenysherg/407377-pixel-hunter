@@ -1,11 +1,11 @@
 import {assert} from 'chai';
 import countScore from './count-score';
-import {ANSWER_TIME, ANSWER_SCORE, LIVE_NUMBER, GAME_NUMBER, ONE_SECOND} from "../data";
+import {ANSWER_TIME, ANSWER_SCORE, LIVE_NUMBER, GAME_NUMBER} from "../data";
 
 const TEST_TIME_NUMBER = {
-  FAST: ANSWER_TIME.FAST - ONE_SECOND,
-  MIDDLE: ANSWER_TIME.SLOW - ONE_SECOND,
-  SLOW: ANSWER_TIME.INCORRECT - ONE_SECOND
+  FAST: ANSWER_TIME.FAST - 1,
+  MIDDLE: ANSWER_TIME.SLOW - 1,
+  SLOW: ANSWER_TIME.INCORRECT - 1
 };
 
 const CORRECT_ANSWER_SCORE = {
@@ -43,7 +43,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered fast and has all lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.FAST, LIVE_NUMBER);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.FAST / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.FAST; i++) {
       assert.equal(countScore(getAnswersExample(LIVE_NUMBER, TEST_TIME_NUMBER.FAST), LIVE_NUMBER), score);
     }
   });
@@ -51,7 +51,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered usually and has all lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.MIDDLE, LIVE_NUMBER);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.MIDDLE / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.MIDDLE; i++) {
       assert.equal(countScore(getAnswersExample(LIVE_NUMBER, TEST_TIME_NUMBER.MIDDLE), LIVE_NUMBER), score);
     }
   });
@@ -59,7 +59,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered slow and has all lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.SLOW, LIVE_NUMBER);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.SLOW / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.SLOW; i++) {
       assert.equal(countScore(getAnswersExample(LIVE_NUMBER, TEST_TIME_NUMBER.SLOW), LIVE_NUMBER), score);
     }
   });
@@ -67,7 +67,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered fast and hasn't lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.FAST, 0);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.FAST / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.FAST; i++) {
       assert.equal(countScore(getAnswersExample(0, TEST_TIME_NUMBER.FAST), 0), score);
     }
   });
@@ -75,7 +75,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered usually and hasn't lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.MIDDLE, 0);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.MIDDLE / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.MIDDLE; i++) {
       assert.equal(countScore(getAnswersExample(0, TEST_TIME_NUMBER.MIDDLE), 0), score);
     }
   });
@@ -83,7 +83,7 @@ describe(`Count score:`, () => {
   it(`should return the correct score when the gamer has answered slow and hasn't lives`, () => {
     const score = getScoreExample(CORRECT_ANSWER_SCORE.SLOW, 0);
 
-    for (let i = 1; i < TEST_TIME_NUMBER.SLOW / ONE_SECOND; i++) {
+    for (let i = 1; i < TEST_TIME_NUMBER.SLOW; i++) {
       assert.equal(countScore(getAnswersExample(0, TEST_TIME_NUMBER.SLOW), 0), score);
     }
   });

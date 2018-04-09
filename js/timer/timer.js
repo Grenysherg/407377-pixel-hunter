@@ -1,5 +1,3 @@
-import {ONE_SECOND} from "../data";
-
 class Timer {
   constructor(time) {
     this.initialTime = time;
@@ -7,9 +5,7 @@ class Timer {
   }
 
   tick() {
-    this.remainingTime -= ONE_SECOND;
-
-    return this.remainingTime > 0 ? this.remainingTime : -1;
+    return --this.remainingTime > 0 ? this.remainingTime : 0;
   }
 }
 

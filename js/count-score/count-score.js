@@ -5,7 +5,7 @@ export default (answers, remainingLives) => {
     return -1;
   }
 
-  let score = 0;
+  let score = ANSWER_SCORE.LIFE * remainingLives;
 
   answers.forEach((answer) => {
     if (answer.isCorrect) {
@@ -20,10 +20,6 @@ export default (answers, remainingLives) => {
       score += ANSWER_SCORE.INCORRECT;
     }
   });
-
-  for (let i = 0; i < remainingLives; i++) {
-    score += ANSWER_SCORE.LIFE;
-  }
 
   return score;
 };
