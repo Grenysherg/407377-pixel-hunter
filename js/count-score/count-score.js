@@ -1,11 +1,13 @@
-import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../data";
+import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../game/game-data";
+import {answers} from "../game/answers";
+import {gameState} from "../game/game-data";
 
-export default (answers, remainingLives) => {
+export default () => {
   if (answers.length < GAME_NUMBER) {
     return -1;
   }
 
-  let score = ANSWER_SCORE.LIFE * remainingLives;
+  let score = ANSWER_SCORE.LIFE * gameState.lives;
 
   answers.forEach((answer) => {
     if (answer.isCorrect) {
