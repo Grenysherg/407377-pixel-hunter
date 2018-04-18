@@ -37,7 +37,7 @@ const countBonuses = () => {
 };
 
 const initStatsTemplate = () => {
-  const totalScore = countScore();
+  const totalScore = countScore(answers, gameState.lives);
   const bonuseScore = countBonuses();
 
   const bonusFastTemplate = bonuseScore.fast.number
