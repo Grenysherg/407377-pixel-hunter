@@ -1,3 +1,3 @@
-import {initIntro} from './intro';
+import {initIntro} from './screens/intro';
 
 initIntro();

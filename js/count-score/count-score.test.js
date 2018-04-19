@@ -1,6 +1,6 @@
 import {assert} from 'chai';
 import countScore from './count-score';
-import {ANSWER_TIME, ANSWER_SCORE, LIVE_NUMBER, GAME_NUMBER} from "../data";
+import {ANSWER_TIME, ANSWER_SCORE, LIVE_NUMBER, GAME_NUMBER} from "../game/game-data";
 
 const TEST_TIME_NUMBER = {
   FAST: ANSWER_TIME.FAST - 1,

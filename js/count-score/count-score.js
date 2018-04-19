@@ -1,4 +1,4 @@
-import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../data";
+import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../game/game-data";
 
 export default (answers, remainingLives) => {
   if (answers.length < GAME_NUMBER) {
