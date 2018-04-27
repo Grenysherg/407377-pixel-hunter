@@ -1,69 +1,23 @@
-import showScreen from '../common/show-screen';
-import {initAnswersTemplate} from "./answers";
-import {initStats} from "../screens/stats";
-import {initHeaderTemplate, initHeaderEvents} from "../blocks/header";
-import {initGame1Template, initGame1Events} from "./types/game-1";
-import {initGame2Template, initGame2Events} from "./types/game-2";
-import {initGame3Template, initGame3Events} from "./types/game-3";
-
-export const LIVE_NUMBER = 3;
-
-export const GAME_NUMBER = 10;
-
-export const ANSWER_TIME = {
+export const AnswerTime = {
   FAST: 10,
   SLOW: 20,
-  INCORRECT: 30
+  MAX: 30,
 };
 
-export const ANSWER_SCORE = {
-  CORRECT: 100,
-  FAST: 50,
-  SLOW: -50,
-  INCORRECT: 0,
+export const Score = {
+  CORRECT_ANSWER: 100,
+  FAST_ANSWER: 50,
+  SLOW_ANSWER: -50,
+  INCORRECT_ANSWER: 0,
   LIFE: 50
 };
 
-export const gameState = {
-  number: 1,
-  time: 12,
-  lives: LIVE_NUMBER
+export const GameParameter = {
+  LIVES: 3,
+  GAMES: 10,
 };
 
-export const switchGame = () => {
-  if (gameState.number >= GAME_NUMBER || gameState.lives < 0) {
-    initStats();
-  } else {
-    gameState.number++;
-    initGame();
-  }
-};
-
-export const initGame = () => {
-  const question = questions[gameState.number - 1];
-
-  showScreen(initHeaderTemplate(gameState) + gameType[question.type].template(question.content) + initAnswersTemplate(), () => {
-    initHeaderEvents();
-    gameType[question.type].events();
-  });
-};
-
-const gameType = {
-  1: {
-    template: initGame1Template,
-    events: initGame1Events
-  },
-  2: {
-    template: initGame2Template,
-    events: initGame2Events
-  },
-  3: {
-    template: initGame3Template,
-    events: initGame3Events
-  }
-};
-
-const questions = [
+export const QUESTIONS = [
   {
     type: 1,
     content: {
@@ -222,5 +176,5 @@ const questions = [
         }
       ]
     }
-  }
+  },
 ];

@@ -33,6 +33,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+
+  .game__option {
+    width: 468px;
+    height: 458px;
+  }
 }
 
 .game__option {

@@ -1,23 +1,23 @@
-import {ANSWER_TIME, ANSWER_SCORE, GAME_NUMBER} from "../game/game-data";
+import {GameParameter, Score, AnswerTime} from "../data";
 
 export default (answers, remainingLives) => {
-  if (answers.length < GAME_NUMBER) {
+  if (answers.length < GameParameter.GAMES) {
     return -1;
   }
 
-  let score = ANSWER_SCORE.LIFE * remainingLives;
+  let score = Score.LIFE * remainingLives;
 
   answers.forEach((answer) => {
     if (answer.isCorrect) {
-      score += ANSWER_SCORE.CORRECT;
+      score += Score.CORRECT_ANSWER;
 
-      if (answer.time < ANSWER_TIME.FAST) {
-        score += ANSWER_SCORE.FAST;
-      } else if (answer.time > ANSWER_TIME.SLOW) {
-        score += ANSWER_SCORE.SLOW;
+      if (answer.time < AnswerTime.FAST) {
+        score += Score.FAST_ANSWER;
+      } else if (answer.time > AnswerTime.SLOW) {
+        score += Score.SLOW_ANSWER;
       }
     } else {
-      score += ANSWER_SCORE.INCORRECT;
+      score += Score.INCORRECT_ANSWER;
     }
   });
 
